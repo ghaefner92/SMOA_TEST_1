@@ -20,11 +20,9 @@ class PrivacyConfigurationTest {
     @Test fun productionManifestDisablesCleartextWhileLocalFlavorsScopeIt() {
         val main = source("app-frontend/app/src/main/AndroidManifest.xml").readText()
         val localUsb = source("app-frontend/app/src/localUsb/AndroidManifest.xml").readText()
-        val localEmulator = source("app-frontend/app/src/localEmulator/AndroidManifest.xml").readText()
 
         assertTrue(main.contains("android:usesCleartextTraffic=\"false\""))
         assertTrue(localUsb.contains("android:usesCleartextTraffic=\"true\""))
-        assertTrue(localEmulator.contains("android:usesCleartextTraffic=\"true\""))
         assertFalse(main.contains("android:usesCleartextTraffic=\"true\""))
     }
 

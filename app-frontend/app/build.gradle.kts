@@ -36,13 +36,6 @@ android {
 
     flavorDimensions += "environment"
     productFlavors {
-        create("localEmulator") {
-            dimension = "environment"
-            applicationIdSuffix = ".local.emulator"
-            versionNameSuffix = "-local-emulator"
-            buildConfigField("String", "DYCONET_BASE_URL", "\"http://10.0.2.2:8077\"")
-            buildConfigField("boolean", "LOCAL_CORE_MODE", "true")
-        }
         create("localUsb") {
             dimension = "environment"
             applicationIdSuffix = ".local.usb"

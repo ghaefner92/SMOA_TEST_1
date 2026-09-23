@@ -9,7 +9,7 @@ if not exist "local.properties" (
   exit /b 1
 )
 
-call gradlew.bat testLocalEmulatorDebugUnitTest lintLocalEmulatorDebug assembleLocalEmulatorDebug assembleLocalUsbDebug
+call gradlew.bat testLocalUsbDebugUnitTest lintLocalUsbDebug assembleLocalUsbDebug
 if errorlevel 1 (
   echo ERROR: la compilacion o una prueba fallo.
   pause
@@ -17,6 +17,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo APK emulador: app\build\outputs\apk\localEmulator\debug\app-localEmulator-debug.apk
 echo APK USB: app\build\outputs\apk\localUsb\debug\app-localUsb-debug.apk
 pause

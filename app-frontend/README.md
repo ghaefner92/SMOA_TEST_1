@@ -114,7 +114,7 @@ These are integration issues, not HOTCO solver changes. The intended ownership b
                                       route cards / map / directions
 ```
 
-`localEmulator` and `localUsb` make the Adaptive Passport → HOTCO core local. Routing, geocoding, GraphHopper and the other institutional services remain separate external dependencies.
+`localUsb` makes the Adaptive Passport → HOTCO core local. Routing, geocoding, GraphHopper and the other institutional services remain separate external dependencies.
 
 ---
 
@@ -123,7 +123,7 @@ These are integration issues, not HOTCO solver changes. The intended ownership b
 The app starts with a splash screen and then chooses the initial screen from local state:
 
 - if a Cognitive Passport already exists, open the home screen;
-- in `localEmulator` or `localUsb`, open profile setup directly;
+- in `localUsb`, open profile setup directly;
 - in `production`, a logged-in user without a completed profile enters setup;
 - otherwise, production opens the access-code login screen.
 
@@ -460,7 +460,6 @@ The Android project defines one `environment` flavor dimension:
 
 | Variant | DYCONET base URL | Local core mode | Intended use |
 |---|---|---:|---|
-| `localEmulatorDebug` | `http://10.0.2.2:8077` | `true` | Android emulator |
 | `localUsbDebug` | `http://127.0.0.1:8077` | `true` | Physical device with `adb reverse` |
 | `productionDebug` | `https://imiq-app.et.uni-magdeburg.de` | `false` | Institutional test/deployment build |
 | `productionRelease` | `https://imiq-app.et.uni-magdeburg.de` | `false` | Release variant |
@@ -474,7 +473,7 @@ Important: the flavor switches the **DYCONET** endpoint. The current routing, Gr
 ## Requirements
 
 - JDK 17
-- Android SDK / platform compatible with `compileSdk = 34`
+- Android SDK / platform compatible with `compileSdk = 36`
 - Android SDK path available through `ANDROID_HOME`, `ANDROID_SDK_ROOT`, or a local non-versioned `local.properties`
 
 Example PowerShell session:
@@ -496,18 +495,6 @@ local.properties.example
 
 Run the current DYCONET backend on port `8077`.
 
-### Emulator
-
-```powershell
-.\gradlew.bat :app:testLocalEmulatorDebugUnitTest :app:assembleLocalEmulatorDebug
-```
-
-APK:
-
-```text
-app/build/outputs/apk/localEmulator/debug/app-localEmulator-debug.apk
-```
-
 ### Physical USB device
 
 Expose the local backend to the phone:
@@ -519,7 +506,7 @@ adb reverse tcp:8077 tcp:8077
 Build:
 
 ```powershell
-.\gradlew.bat :app:testLocalUsbDebugUnitTest :app:assembleLocalUsbDebug
+.\gradlew.bat :app:lintLocalUsbDebug :app:testLocalUsbDebugUnitTest :app:assembleLocalUsbDebug
 ```
 
 APK:
@@ -528,7 +515,7 @@ APK:
 app/build/outputs/apk/localUsb/debug/app-localUsb-debug.apk
 ```
 
-The helper script `BUILD_LOCAL_APKS_WINDOWS.bat` can build the local variants after `local.properties` is configured.
+The helper script `BUILD_LOCAL_APKS_WINDOWS.bat` builds this USB variant after `local.properties` is configured.
 
 ---
 
@@ -559,9 +546,10 @@ The workflow:
 1. checks out the repository;
 2. installs JDK 17;
 3. validates the Gradle wrapper;
-4. runs `./gradlew :app:testProductionDebugUnitTest --stacktrace`;
-5. runs `./gradlew :app:assembleProductionDebug --stacktrace`;
-6. uploads `app/build/outputs/apk/production/debug/*.apk`.
+4. runs `./gradlew :app:lintProductionDebug --stacktrace`;
+5. runs `./gradlew :app:testProductionDebugUnitTest --stacktrace`;
+6. runs `./gradlew :app:assembleProductionDebug --stacktrace`;
+7. uploads `app/build/outputs/apk/production/debug/*.apk`.
 
 Unit tests are not configured with `continue-on-error`; a failing test fails CI.
 
