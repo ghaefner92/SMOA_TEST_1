@@ -122,7 +122,8 @@ internal fun buildSurveyJson(
             put("top_needs_ranking", buildJsonArray { top3.forEach { add(JsonPrimitive(it)) } })
             put("environmental_tolerances", buildJsonObject {
                 ENVIRONMENTAL_TOLERANCE_KEYS.forEach { key ->
-                    likertToTolerance(environmentalTolerances[key])?.let { put(key, it) } ?: put(key, JsonNull)
+                    val tolerance = likertToTolerance(environmentalTolerances[key])
+                    if (tolerance == null) put(key, JsonNull) else put(key, JsonPrimitive(tolerance))
                 }
             })
         })
