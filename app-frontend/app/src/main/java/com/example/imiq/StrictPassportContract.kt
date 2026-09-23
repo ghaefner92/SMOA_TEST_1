@@ -2,6 +2,7 @@ package com.example.imiq
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.buildJsonObject
@@ -118,7 +119,7 @@ internal fun buildSurveyJson(
             put("valences", buildJsonObject {
                 strictModeKeys.forEach { put(it, requireNotNull(valences[it]).toInt() - 4) }
             })
-            put("top_needs_ranking", buildJsonArray { top3.forEach { add(it) } })
+            put("top_needs_ranking", buildJsonArray { top3.forEach { add(JsonPrimitive(it)) } })
             put("environmental_tolerances", buildJsonObject {
                 ENVIRONMENTAL_TOLERANCE_KEYS.forEach { key ->
                     likertToTolerance(environmentalTolerances[key])?.let { put(key, it) } ?: put(key, JsonNull)
