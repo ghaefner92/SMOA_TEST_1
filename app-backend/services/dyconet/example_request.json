@@ -1,0 +1,90 @@
+{
+  "schema_version": "hotco_ct_input_2.1",
+  "agent_id": "example-user-001",
+  "responses": {
+    "needs": {
+      "comfort_physical": 5,
+      "reliable": 6,
+      "flex": 6,
+      "cost": 7,
+      "safety_crime": 5,
+      "health_activity": 4,
+      "time": 6,
+      "health_infection": 3,
+      "crowding": 4,
+      "safety_accident": 6,
+      "env": 5
+    },
+    "beliefs": {
+      "car": {
+        "comfort_physical": 6,
+        "reliable": 5,
+        "flex": 7,
+        "cost": 2,
+        "safety_crime": 6,
+        "health_activity": 1,
+        "time": 6,
+        "health_infection": 6,
+        "crowding": 7,
+        "safety_accident": 5,
+        "env": 2
+      },
+      "bike": {
+        "comfort_physical": 3,
+        "reliable": 6,
+        "flex": 6,
+        "cost": 7,
+        "safety_crime": 4,
+        "health_activity": 7,
+        "time": 5,
+        "health_infection": 6,
+        "crowding": 6,
+        "safety_accident": 3,
+        "env": 7
+      },
+      "pt": {
+        "comfort_physical": 4,
+        "reliable": 3,
+        "flex": 3,
+        "cost": 5,
+        "safety_crime": 4,
+        "health_activity": 3,
+        "time": 4,
+        "health_infection": 3,
+        "crowding": 2,
+        "safety_accident": 6,
+        "env": 6
+      },
+      "walk": {
+        "comfort_physical": 3,
+        "reliable": 7,
+        "flex": 7,
+        "cost": 7,
+        "safety_crime": 4,
+        "health_activity": 7,
+        "time": 2,
+        "health_infection": 6,
+        "crowding": 7,
+        "safety_accident": 5,
+        "env": 7
+      }
+    },
+    "valences": {
+      "car": 1,
+      "bike": 3,
+      "pt": 0,
+      "walk": 2
+    },
+    "availability": {
+      "car": true,
+      "bike": true,
+      "pt": true,
+      "walk": true
+    },
+    "top_needs_ranking": [
+      "cost",
+      "reliable",
+      "time"
+    ]
+  }
+}

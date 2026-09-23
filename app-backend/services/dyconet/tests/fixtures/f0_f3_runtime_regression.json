@@ -1,0 +1,8 @@
+{
+  "status": "synthetic deterministic regression fixture",
+  "f0_identifier": "F0_LEGACY_V1",
+  "f3_identifier": "F3_NEED_ONLY_V1",
+  "rho": 0.25,
+  "tolerance": {"absolute": 1e-12},
+  "scientific_note": "Comparison documents structural runtime differences and does not establish empirical predictive superiority."
+}

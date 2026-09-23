@@ -1,0 +1,654 @@
+{
+  "schema_version": "adaptive_cognitive_passport_artifact_1.0",
+  "model_name": "Adaptive Cognitive Passport",
+  "model_version": "v1",
+  "status": "experimental_validated_internal",
+  "created_at": "2026-09-17T11:10:12.769887Z",
+  "training_scope": {
+    "split": "train_only",
+    "n_persons": 388,
+    "n_observed_belief_rows": 4146,
+    "test_used_for_training": false,
+    "validation_used_for_training": false
+  },
+  "canonical_contract": {
+    "modes": [
+      "car",
+      "bike",
+      "pt",
+      "walk"
+    ],
+    "needs": [
+      "pro_env",
+      "physical",
+      "privacy",
+      "autonomy",
+      "cost",
+      "speed",
+      "safety_accident",
+      "safety_crime",
+      "comfort",
+      "reliable",
+      "health_infection"
+    ],
+    "belief_matrix_shape": [
+      4,
+      11
+    ],
+    "belief_range": [
+      -1.0,
+      1.0
+    ],
+    "need_range": [
+      0.0,
+      1.0
+    ],
+    "valence_range": [
+      -1.0,
+      1.0
+    ]
+  },
+  "ridge": {
+    "alpha": 1.0,
+    "solver": "lsqr",
+    "intercept": 0.20687425332479983,
+    "numeric_features": [
+      "need_pro_env",
+      "need_physical",
+      "need_privacy",
+      "need_autonomy",
+      "need_cost",
+      "need_speed",
+      "need_safety_accident",
+      "need_safety_crime",
+      "need_comfort",
+      "need_reliable",
+      "need_health_infection",
+      "target_need_priority",
+      "target_mode_valence",
+      "target_mode_valence_missing"
+    ],
+    "categorical_features": [
+      "cell_id"
+    ],
+    "numeric_imputer": {
+      "strategy": "mean",
+      "statistics": {
+        "need_pro_env": 0.6504261135230746,
+        "need_physical": 0.7289757195690626,
+        "need_privacy": 0.6336629683228816,
+        "need_autonomy": 0.768451519536903,
+        "need_cost": 0.8418556037948223,
+        "need_speed": 0.8264994372085545,
+        "need_safety_accident": 0.7940585303103393,
+        "need_safety_crime": 0.7832850940665702,
+        "need_comfort": 0.7279707348448303,
+        "need_reliable": 0.8825373854317414,
+        "need_health_infection": 0.6350297475478374,
+        "target_need_priority": 0.9152194886637723,
+        "target_mode_valence": 0.43373947658624495,
+        "target_mode_valence_missing": 0.00361794500723589
+      }
+    },
+    "onehot_categories": {
+      "cell_id": [
+        "bike__autonomy",
+        "bike__comfort",
+        "bike__cost",
+        "bike__health_infection",
+        "bike__physical",
+        "bike__privacy",
+        "bike__pro_env",
+        "bike__reliable",
+        "bike__safety_accident",
+        "bike__safety_crime",
+        "bike__speed",
+        "car__autonomy",
+        "car__comfort",
+        "car__cost",
+        "car__health_infection",
+        "car__physical",
+        "car__privacy",
+        "car__pro_env",
+        "car__reliable",
+        "car__safety_accident",
+        "car__safety_crime",
+        "car__speed",
+        "pt__autonomy",
+        "pt__comfort",
+        "pt__cost",
+        "pt__health_infection",
+        "pt__physical",
+        "pt__privacy",
+        "pt__pro_env",
+        "pt__reliable",
+        "pt__safety_accident",
+        "pt__safety_crime",
+        "pt__speed",
+        "walk__autonomy",
+        "walk__comfort",
+        "walk__cost",
+        "walk__health_infection",
+        "walk__physical",
+        "walk__privacy",
+        "walk__pro_env",
+        "walk__reliable",
+        "walk__safety_accident",
+        "walk__safety_crime",
+        "walk__speed"
+      ]
+    },
+    "transformed_feature_names": [
+      "numeric__need_pro_env",
+      "numeric__need_physical",
+      "numeric__need_privacy",
+      "numeric__need_autonomy",
+      "numeric__need_cost",
+      "numeric__need_speed",
+      "numeric__need_safety_accident",
+      "numeric__need_safety_crime",
+      "numeric__need_comfort",
+      "numeric__need_reliable",
+      "numeric__need_health_infection",
+      "numeric__target_need_priority",
+      "numeric__target_mode_valence",
+      "numeric__target_mode_valence_missing",
+      "categorical__cell_id_bike__autonomy",
+      "categorical__cell_id_bike__comfort",
+      "categorical__cell_id_bike__cost",
+      "categorical__cell_id_bike__health_infection",
+      "categorical__cell_id_bike__physical",
+      "categorical__cell_id_bike__privacy",
+      "categorical__cell_id_bike__pro_env",
+      "categorical__cell_id_bike__reliable",
+      "categorical__cell_id_bike__safety_accident",
+      "categorical__cell_id_bike__safety_crime",
+      "categorical__cell_id_bike__speed",
+      "categorical__cell_id_car__autonomy",
+      "categorical__cell_id_car__comfort",
+      "categorical__cell_id_car__cost",
+      "categorical__cell_id_car__health_infection",
+      "categorical__cell_id_car__physical",
+      "categorical__cell_id_car__privacy",
+      "categorical__cell_id_car__pro_env",
+      "categorical__cell_id_car__reliable",
+      "categorical__cell_id_car__safety_accident",
+      "categorical__cell_id_car__safety_crime",
+      "categorical__cell_id_car__speed",
+      "categorical__cell_id_pt__autonomy",
+      "categorical__cell_id_pt__comfort",
+      "categorical__cell_id_pt__cost",
+      "categorical__cell_id_pt__health_infection",
+      "categorical__cell_id_pt__physical",
+      "categorical__cell_id_pt__privacy",
+      "categorical__cell_id_pt__pro_env",
+      "categorical__cell_id_pt__reliable",
+      "categorical__cell_id_pt__safety_accident",
+      "categorical__cell_id_pt__safety_crime",
+      "categorical__cell_id_pt__speed",
+      "categorical__cell_id_walk__autonomy",
+      "categorical__cell_id_walk__comfort",
+      "categorical__cell_id_walk__cost",
+      "categorical__cell_id_walk__health_infection",
+      "categorical__cell_id_walk__physical",
+      "categorical__cell_id_walk__privacy",
+      "categorical__cell_id_walk__pro_env",
+      "categorical__cell_id_walk__reliable",
+      "categorical__cell_id_walk__safety_accident",
+      "categorical__cell_id_walk__safety_crime",
+      "categorical__cell_id_walk__speed"
+    ],
+    "coefficients": [
+      0.02972695859109838,
+      0.03725656229306321,
+      -0.06704777809636604,
+      -0.10042142426892155,
+      0.09632428763126016,
+      -0.01443465970837206,
+      0.0065766620379933555,
+      0.05593463302029478,
+      0.01216308826017248,
+      0.005111991500351386,
+      0.08147489888808436,
+      -0.049810974481362826,
+      0.3669236312530104,
+      0.09879616812960668,
+      0.27265933166291606,
+      -0.3932186954861942,
+      0.16394051541051521,
+      0.08434318135374144,
+      0.40547144500484905,
+      0.2141874507259497,
+      0.4293961227156043,
+      0.3109994369804596,
+      -0.2806181817565474,
+      0.0536866420959075,
+      0.05366963808031988,
+      0.2143032310324209,
+      0.28026095821953917,
+      -0.43530297473259455,
+      0.1320114328035757,
+      -0.9982698759953934,
+      0.24856196154084512,
+      -0.5160139230039872,
+      0.27517224463459455,
+      0.08454990896343036,
+      0.3409168264337056,
+      0.24268517811228651,
+      -0.34124778106417214,
+      -0.20175694771726238,
+      -0.01625488395734212,
+      -0.3332224651078661,
+      -0.69036048305108,
+      -0.38997022679549037,
+      0.19854630786095978,
+      -0.12551092089032226,
+      0.2804013875500513,
+      -0.19242061876766797,
+      -0.14679925954970402,
+      0.31488378071836154,
+      -0.34253952735323817,
+      0.32305689277357263,
+      0.2511537708218974,
+      0.3341504131773427,
+      0.17379676557594395,
+      0.40244582954138697,
+      0.37230622714896994,
+      -0.01929124363567356,
+      -0.2586612669822799,
+      -0.7760976050923248
+    ],
+    "runtime_prediction": "intercept + dot(transformed_features, coefficients)",
+    "prediction_clip": [
+      -1.0,
+      1.0
+    ]
+  },
+  "adaptive_questioning": {
+    "k": 4,
+    "global_shrinkage_lambda": 4.0,
+    "action_diversity_bonus": 0.005,
+    "need_diversity_bonus": 0.0025,
+    "selection_score": "utility + action_diversity_bonus * I(new_hotco_action) + need_diversity_bonus * I(new_need)",
+    "tie_breaking": [
+      "score_descending",
+      "utility_descending",
+      "cell_id_ascending"
+    ],
+    "personalization": {
+      "method": "global_residual_shrinkage",
+      "formula": "delta = k / (k + lambda) * mean(observed - ridge)",
+      "selected_answers_override_estimates": true
+    },
+    "utility_table": [
+      {
+        "cell_id": "bike__autonomy",
+        "hotco_mode": "bike",
+        "model_need": "autonomy",
+        "utility": 0.009507718113456546,
+        "utility_median": 0.004352490141082632,
+        "n_train_observations": 120
+      },
+      {
+        "cell_id": "bike__comfort",
+        "hotco_mode": "bike",
+        "model_need": "comfort",
+        "utility": 0.010437216400442659,
+        "utility_median": 0.005305132504494173,
+        "n_train_observations": 48
+      },
+      {
+        "cell_id": "bike__cost",
+        "hotco_mode": "bike",
+        "model_need": "cost",
+        "utility": 0.006645420406779523,
+        "utility_median": 0.004034958951723372,
+        "n_train_observations": 163
+      },
+      {
+        "cell_id": "bike__health_infection",
+        "hotco_mode": "bike",
+        "model_need": "health_infection",
+        "utility": 0.009852807127588977,
+        "utility_median": 0.002059904656796188,
+        "n_train_observations": 26
+      },
+      {
+        "cell_id": "bike__physical",
+        "hotco_mode": "bike",
+        "model_need": "physical",
+        "utility": -0.00020607522373428135,
+        "utility_median": 0.0,
+        "n_train_observations": 56
+      },
+      {
+        "cell_id": "bike__privacy",
+        "hotco_mode": "bike",
+        "model_need": "privacy",
+        "utility": 0.01270689601044635,
+        "utility_median": 0.011948492125959692,
+        "n_train_observations": 33
+      },
+      {
+        "cell_id": "bike__pro_env",
+        "hotco_mode": "bike",
+        "model_need": "pro_env",
+        "utility": 0.006717584896910445,
+        "utility_median": 0.0004011461482479606,
+        "n_train_observations": 48
+      },
+      {
+        "cell_id": "bike__reliable",
+        "hotco_mode": "bike",
+        "model_need": "reliable",
+        "utility": 0.005089281572887769,
+        "utility_median": 0.0017062091499468468,
+        "n_train_observations": 172
+      },
+      {
+        "cell_id": "bike__safety_accident",
+        "hotco_mode": "bike",
+        "model_need": "safety_accident",
+        "utility": 0.01104327418990086,
+        "utility_median": 0.003757985755081461,
+        "n_train_observations": 69
+      },
+      {
+        "cell_id": "bike__safety_crime",
+        "hotco_mode": "bike",
+        "model_need": "safety_crime",
+        "utility": 0.010050041925083622,
+        "utility_median": 0.003253936752557307,
+        "n_train_observations": 73
+      },
+      {
+        "cell_id": "bike__speed",
+        "hotco_mode": "bike",
+        "model_need": "speed",
+        "utility": 0.008685685954176235,
+        "utility_median": 0.005856293814948371,
+        "n_train_observations": 134
+      },
+      {
+        "cell_id": "car__autonomy",
+        "hotco_mode": "car",
+        "model_need": "autonomy",
+        "utility": 0.0066466936623617336,
+        "utility_median": 0.003261401561738153,
+        "n_train_observations": 124
+      },
+      {
+        "cell_id": "car__comfort",
+        "hotco_mode": "car",
+        "model_need": "comfort",
+        "utility": 0.004938101083350056,
+        "utility_median": 0.0016365382641018722,
+        "n_train_observations": 51
+      },
+      {
+        "cell_id": "car__cost",
+        "hotco_mode": "car",
+        "model_need": "cost",
+        "utility": 0.006918770957223992,
+        "utility_median": 0.0001456844642383215,
+        "n_train_observations": 168
+      },
+      {
+        "cell_id": "car__health_infection",
+        "hotco_mode": "car",
+        "model_need": "health_infection",
+        "utility": 0.005869148636729239,
+        "utility_median": 1.1102230246251565e-16,
+        "n_train_observations": 27
+      },
+      {
+        "cell_id": "car__physical",
+        "hotco_mode": "car",
+        "model_need": "physical",
+        "utility": -0.0020225738331535706,
+        "utility_median": 0.0,
+        "n_train_observations": 53
+      },
+      {
+        "cell_id": "car__privacy",
+        "hotco_mode": "car",
+        "model_need": "privacy",
+        "utility": 0.00450205651822953,
+        "utility_median": 0.003916649000018313,
+        "n_train_observations": 33
+      },
+      {
+        "cell_id": "car__pro_env",
+        "hotco_mode": "car",
+        "model_need": "pro_env",
+        "utility": 0.00019401068862343661,
+        "utility_median": -0.00034865947170756306,
+        "n_train_observations": 50
+      },
+      {
+        "cell_id": "car__reliable",
+        "hotco_mode": "car",
+        "model_need": "reliable",
+        "utility": 0.009238261978682395,
+        "utility_median": 0.004009015178533665,
+        "n_train_observations": 187
+      },
+      {
+        "cell_id": "car__safety_accident",
+        "hotco_mode": "car",
+        "model_need": "safety_accident",
+        "utility": -0.0003167448632090401,
+        "utility_median": 0.0013865522466257607,
+        "n_train_observations": 75
+      },
+      {
+        "cell_id": "car__safety_crime",
+        "hotco_mode": "car",
+        "model_need": "safety_crime",
+        "utility": 0.006283821956057805,
+        "utility_median": 0.0022520865892526054,
+        "n_train_observations": 77
+      },
+      {
+        "cell_id": "car__speed",
+        "hotco_mode": "car",
+        "model_need": "speed",
+        "utility": 0.0015252293689223292,
+        "utility_median": 0.0006190161995313082,
+        "n_train_observations": 139
+      },
+      {
+        "cell_id": "pt__autonomy",
+        "hotco_mode": "pt",
+        "model_need": "autonomy",
+        "utility": 0.002404676259645641,
+        "utility_median": -0.0005785816847270198,
+        "n_train_observations": 125
+      },
+      {
+        "cell_id": "pt__comfort",
+        "hotco_mode": "pt",
+        "model_need": "comfort",
+        "utility": 0.02039875644008732,
+        "utility_median": 0.012547701123900523,
+        "n_train_observations": 57
+      },
+      {
+        "cell_id": "pt__cost",
+        "hotco_mode": "pt",
+        "model_need": "cost",
+        "utility": -0.0016979618848578638,
+        "utility_median": 0.0,
+        "n_train_observations": 197
+      },
+      {
+        "cell_id": "pt__health_infection",
+        "hotco_mode": "pt",
+        "model_need": "health_infection",
+        "utility": 0.0049157942193123715,
+        "utility_median": -0.003433354816462897,
+        "n_train_observations": 29
+      },
+      {
+        "cell_id": "pt__physical",
+        "hotco_mode": "pt",
+        "model_need": "physical",
+        "utility": 0.001955973206858097,
+        "utility_median": 0.0009954314515839835,
+        "n_train_observations": 59
+      },
+      {
+        "cell_id": "pt__privacy",
+        "hotco_mode": "pt",
+        "model_need": "privacy",
+        "utility": 0.006107625397328989,
+        "utility_median": 0.005815695425871098,
+        "n_train_observations": 37
+      },
+      {
+        "cell_id": "pt__pro_env",
+        "hotco_mode": "pt",
+        "model_need": "pro_env",
+        "utility": -0.0014102013982415513,
+        "utility_median": -0.0004176464952758141,
+        "n_train_observations": 55
+      },
+      {
+        "cell_id": "pt__reliable",
+        "hotco_mode": "pt",
+        "model_need": "reliable",
+        "utility": 0.002771580614549153,
+        "utility_median": 0.0006000213198006227,
+        "n_train_observations": 198
+      },
+      {
+        "cell_id": "pt__safety_accident",
+        "hotco_mode": "pt",
+        "model_need": "safety_accident",
+        "utility": 0.000754408226515641,
+        "utility_median": 0.0020381003740270465,
+        "n_train_observations": 87
+      },
+      {
+        "cell_id": "pt__safety_crime",
+        "hotco_mode": "pt",
+        "model_need": "safety_crime",
+        "utility": 0.0051366265844456855,
+        "utility_median": 0.0017464593750179114,
+        "n_train_observations": 92
+      },
+      {
+        "cell_id": "pt__speed",
+        "hotco_mode": "pt",
+        "model_need": "speed",
+        "utility": 0.009129524677676427,
+        "utility_median": 0.005367700839875589,
+        "n_train_observations": 160
+      },
+      {
+        "cell_id": "walk__autonomy",
+        "hotco_mode": "walk",
+        "model_need": "autonomy",
+        "utility": 0.008110357535432627,
+        "utility_median": 0.004788607540059164,
+        "n_train_observations": 134
+      },
+      {
+        "cell_id": "walk__comfort",
+        "hotco_mode": "walk",
+        "model_need": "comfort",
+        "utility": 0.017714697727898878,
+        "utility_median": 0.01016976401367986,
+        "n_train_observations": 59
+      },
+      {
+        "cell_id": "walk__cost",
+        "hotco_mode": "walk",
+        "model_need": "cost",
+        "utility": -0.0030703545571004417,
+        "utility_median": 1.1102230246251565e-16,
+        "n_train_observations": 199
+      },
+      {
+        "cell_id": "walk__health_infection",
+        "hotco_mode": "walk",
+        "model_need": "health_infection",
+        "utility": 0.010905647624675305,
+        "utility_median": 0.0035124073278565704,
+        "n_train_observations": 29
+      },
+      {
+        "cell_id": "walk__physical",
+        "hotco_mode": "walk",
+        "model_need": "physical",
+        "utility": -0.0025593625433513833,
+        "utility_median": 0.0,
+        "n_train_observations": 61
+      },
+      {
+        "cell_id": "walk__privacy",
+        "hotco_mode": "walk",
+        "model_need": "privacy",
+        "utility": 0.01092916288777096,
+        "utility_median": 0.010621360862323237,
+        "n_train_observations": 38
+      },
+      {
+        "cell_id": "walk__pro_env",
+        "hotco_mode": "walk",
+        "model_need": "pro_env",
+        "utility": 4.232034860874302e-05,
+        "utility_median": 0.0,
+        "n_train_observations": 56
+      },
+      {
+        "cell_id": "walk__reliable",
+        "hotco_mode": "walk",
+        "model_need": "reliable",
+        "utility": 0.004773205587726668,
+        "utility_median": 0.0015272232661261431,
+        "n_train_observations": 203
+      },
+      {
+        "cell_id": "walk__safety_accident",
+        "hotco_mode": "walk",
+        "model_need": "safety_accident",
+        "utility": 0.01205237896874597,
+        "utility_median": 0.0065258290910674005,
+        "n_train_observations": 86
+      },
+      {
+        "cell_id": "walk__safety_crime",
+        "hotco_mode": "walk",
+        "model_need": "safety_crime",
+        "utility": 0.006678205741500703,
+        "utility_median": 0.0014144702107410367,
+        "n_train_observations": 95
+      },
+      {
+        "cell_id": "walk__speed",
+        "hotco_mode": "walk",
+        "model_need": "speed",
+        "utility": 0.007020416910505054,
+        "utility_median": 0.0005096878371129987,
+        "n_train_observations": 164
+      }
+    ]
+  },
+  "provenance_policy": {
+    "estimated_cells": "estimated",
+    "direct_question_answers": "observed",
+    "automatic_behavioral_profile_updates": false,
+    "route_choice_is_psychological_measurement": false,
+    "context_updates_stable_profile": false
+  },
+  "validation_evidence": {
+    "validation_hotco_n": 74,
+    "exact_winner_agreement": 0.8108108108108109,
+    "practical_outcome_agreement": 0.9594594594594594,
+    "winner_agreement_given_reference_decisive": 0.9387755102040817,
+    "decisive_winner_disagreement_rate": 0.013513513513513514,
+    "practical_margin_threshold": 0.01,
+    "interpretation": "internal development validation; not external confirmatory evidence"
+  }
+}
